@@ -1,0 +1,590 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>QVeris Logo Showcase</title>
+  <style>
+    :root {
+      --ink: #111318;
+      --muted: #66707b;
+      --line: rgba(17, 19, 24, 0.12);
+      --paper: #f4f0e8;
+      --surface: rgba(255, 255, 255, 0.76);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 12% 8%, rgba(44, 108, 255, 0.10), transparent 30%),
+        radial-gradient(circle at 88% 0%, rgba(126, 105, 232, 0.10), transparent 28%),
+        linear-gradient(135deg, #fbfaf6, var(--paper));
+    }
+
+    main {
+      width: min(1360px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 48px 0 72px;
+    }
+
+    header {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 420px;
+      gap: 40px;
+      align-items: end;
+      margin-bottom: 28px;
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 760;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 900px;
+      font-size: clamp(42px, 5.6vw, 82px);
+      line-height: .93;
+      letter-spacing: 0;
+    }
+
+    .intro {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .stat {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255,255,255,.62);
+      padding: 16px;
+      box-shadow: 0 18px 50px rgba(22,24,30,.06);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 22px;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      background: var(--surface);
+      box-shadow: 0 24px 72px rgba(22,24,30,.08);
+      overflow: hidden;
+      backdrop-filter: blur(18px);
+    }
+
+    .visual {
+      min-height: 286px;
+      padding: 18px;
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 12px;
+      background:
+        radial-gradient(circle at 50% 35%, rgba(255,255,255,.92), transparent 58%),
+        linear-gradient(145deg, rgba(255,255,255,.86), rgba(246,243,236,.74));
+    }
+
+    .visual.four-up {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-rows: repeat(2, minmax(0, 1fr));
+    }
+
+    .visual.three-up {
+      grid-template-columns: 1.08fr .92fr;
+    }
+
+    .visual.two-up {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .hero-tile,
+    .mini-tile {
+      position: relative;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(17,19,24,.10);
+      border-radius: 20px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 38%, rgba(255,255,255,.98), transparent 62%),
+        linear-gradient(145deg, #ffffff, #f1eee7);
+    }
+
+    .hero-tile {
+      min-height: 248px;
+    }
+
+    .four-up .hero-tile,
+    .four-up .mini-tile,
+    .two-up .hero-tile,
+    .two-up .mini-tile {
+      min-height: 124px;
+    }
+
+    .four-up .hero-tile img,
+    .four-up .mini-tile img,
+    .two-up .hero-tile img,
+    .two-up .mini-tile img {
+      max-width: 78%;
+      max-height: 78%;
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-auto-rows: 1fr;
+      gap: 12px;
+    }
+
+    .mini-tile {
+      min-height: 74px;
+    }
+
+    img {
+      max-width: 84%;
+      max-height: 84%;
+      object-fit: contain;
+      filter: drop-shadow(0 16px 24px rgba(17,19,24,.12));
+      cursor: zoom-in;
+    }
+
+    .mini-tile img {
+      max-width: 74%;
+      max-height: 74%;
+    }
+
+    .body {
+      padding: 20px 21px 22px;
+      background: rgba(255,255,255,.74);
+      border-top: 1px solid var(--line);
+    }
+
+    .topline {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: start;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 19px;
+      letter-spacing: 0;
+    }
+
+    .badge {
+      white-space: nowrap;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.72);
+      color: #4b5563;
+      padding: 7px 10px;
+      font-size: 12px;
+      font-weight: 760;
+    }
+
+    p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .files {
+      margin-top: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .file {
+      padding: 6px 8px;
+      border-radius: 8px;
+      color: #5b6470;
+      background: rgba(17,19,24,.06);
+      font-size: 11px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+
+    .download-link {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 2;
+      border: 1px solid rgba(17,19,24,.12);
+      border-radius: 999px;
+      padding: 7px 10px;
+      color: #111318;
+      background: rgba(255,255,255,.82);
+      font-size: 12px;
+      font-weight: 760;
+      line-height: 1;
+      text-decoration: none;
+      opacity: 0;
+      transform: translateY(-4px);
+      transition: opacity .18s ease, transform .18s ease, background .18s ease;
+      backdrop-filter: blur(12px);
+    }
+
+    .hero-tile:hover .download-link,
+    .mini-tile:hover .download-link {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 28px;
+      background: rgba(5,7,11,.82);
+      backdrop-filter: blur(18px);
+    }
+
+    .lightbox.is-open { display: flex; }
+
+    .lightbox-panel {
+      width: min(980px, 100%);
+      max-height: min(860px, calc(100vh - 56px));
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 26px;
+      overflow: hidden;
+      background: #f8f7f2;
+      box-shadow: 0 30px 100px rgba(0,0,0,.42);
+    }
+
+    .lightbox-stage {
+      min-height: 520px;
+      display: grid;
+      place-items: center;
+      padding: 38px;
+      background:
+        radial-gradient(circle at 50% 35%, rgba(255,255,255,.96), transparent 58%),
+        linear-gradient(145deg, #fbfaf6, #ede8df);
+    }
+
+    .lightbox-stage img {
+      max-width: 100%;
+      max-height: 68vh;
+      object-fit: contain;
+      cursor: default;
+      filter: drop-shadow(0 22px 42px rgba(17,19,24,.20));
+    }
+
+    .lightbox-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 14px 16px;
+      background: rgba(255,255,255,.88);
+      border-top: 1px solid var(--line);
+    }
+
+    .lightbox-name {
+      color: #374151;
+      font-size: 13px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+
+    .lightbox-actions {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .lightbox-actions a,
+    .lightbox-actions button {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 9px 12px;
+      color: #111318;
+      background: #fff;
+      font-size: 13px;
+      font-weight: 760;
+      text-decoration: none;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    footer {
+      margin-top: 26px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 1120px) {
+      header { grid-template-columns: 1fr; }
+      .summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 680px) {
+      main { width: min(100% - 24px, 1360px); padding-top: 32px; }
+      .summary, .grid { grid-template-columns: 1fr; }
+      .visual,
+      .visual.four-up,
+      .visual.three-up,
+      .visual.two-up { grid-template-columns: 1fr; grid-template-rows: none; }
+      .mini-grid { grid-template-columns: repeat(3, 1fr); grid-auto-rows: auto; }
+      .mini-tile { min-height: 92px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <div>
+        <p class="eyebrow">QVeris identity directions</p>
+        <h1>13 个 Logo 方向展示板</h1>
+      </div>
+      <p class="intro">每张卡片代表一个独立视觉方向，卡片内展示该方向的主要版本和配色变体。适合给客户做第一轮筛选：先选方向，再进入精修。</p>
+    </header>
+
+    <section class="summary" aria-label="Showcase summary">
+      <div class="stat"><strong>13</strong><span>视觉方向</span></div>
+      <div class="stat"><strong>40+</strong><span>图标和 Logo 变体</span></div>
+      <div class="stat"><strong>统一</strong><span>同一种卡片展示样式</span></div>
+      <div class="stat"><strong>可下载</strong><span>点击放大并下载 PNG</span></div>
+    </section>
+
+    <section class="grid" aria-label="Logo direction cards">
+      <article class="card">
+        <div class="visual four-up">
+          <div class="hero-tile"><img src="images/1-1.png" alt="Direction 1 main logo"></div>
+          <div class="mini-tile"><img src="images/1-2.png" alt=""></div>
+          <div class="mini-tile"><img src="images/1-3.png" alt=""></div>
+          <div class="mini-tile"><img src="images/1-4.png" alt=""></div>
+        </div>
+        <div class="body"><div class="topline"><h2>01. Capability Route</h2><span class="badge">product fit</span></div><p>最贴近 QVeris 能力路由网络的方向。弧线和节点表达 discover、route、call。</p><div class="files"><span class="file">1-1</span><span class="file">1-2</span><span class="file">1-3</span><span class="file">1-4</span></div></div>
+      </article>
+
+      <article class="card">
+        <div class="visual four-up">
+          <div class="hero-tile"><img src="images/2-1.png" alt="Direction 2 main logo"></div>
+          <div class="mini-tile"><img src="images/2-2.png" alt=""></div>
+          <div class="mini-tile"><img src="images/2-3.png" alt=""></div>
+          <div class="mini-tile"><img src="images/2-4.png" alt=""></div>
+        </div>
+        <div class="body"><div class="topline"><h2>02. Target Q</h2><span class="badge">safe</span></div><p>清晰直接的 Q / 放大镜方向，识别度高，黑白和灰阶都容易落地。</p><div class="files"><span class="file">2-1</span><span class="file">2-2</span><span class="file">2-3</span><span class="file">2-4</span></div></div>
+      </article>
+
+      <article class="card">
+        <div class="visual four-up">
+          <div class="hero-tile"><img src="images/3-2.png" alt="Direction 3 main logo"></div>
+          <div class="mini-tile"><img src="images/3-1.png" alt=""></div>
+          <div class="mini-tile"><img src="images/3-3.png" alt=""></div>
+          <div class="mini-tile"><img src="images/3-4.png" alt=""></div>
+        </div>
+        <div class="body"><div class="topline"><h2>03. Dot Field Q</h2><span class="badge">AI/data</span></div><p>点阵形成 Q，偏 AI、数据网络、能力索引，适合强调海量工具和能力发现。</p><div class="files"><span class="file">3-2</span><span class="file">3-1</span><span class="file">3-3</span><span class="file">3-4</span></div></div>
+      </article>
+
+      <article class="card">
+        <div class="visual four-up">
+          <div class="hero-tile"><img src="images/4-1.png" alt="Direction 4 main logo"></div>
+          <div class="mini-tile"><img src="images/4-2.png" alt=""></div>
+          <div class="mini-tile"><img src="images/4-3.png" alt=""></div>
+          <div class="mini-tile"><img src="images/4-4.png" alt=""></div>
+        </div>
+        <div class="body"><div class="topline"><h2>04. Orbit Q</h2><span class="badge">minimal</span></div><p>轻量轨道式 Q，干净、技术感适中，适合作为产品图标或导航 logo。</p><div class="files"><span class="file">4-1</span><span class="file">4-2</span><span class="file">4-3</span><span class="file">4-4</span></div></div>
+      </article>
+
+      <article class="card">
+        <div class="visual four-up">
+          <div class="hero-tile"><img src="images/5-1.png" alt="Direction 5 main logo"></div>
+          <div class="mini-tile"><img src="images/5-2.png" alt=""></div>
+          <div class="mini-tile"><img src="images/5-3.png" alt=""></div>
+          <div class="mini-tile"><img src="images/5-4.png" alt=""></div>
+        </div>
+        <div class="body"><div class="topline"><h2>05. Planetary Q</h2><span class="badge">classic</span></div><p>大 Q 加轨道节点，辨识强，适合全球能力网络和 agent ecosystem 叙事。</p><div class="files"><span class="file">5-1</span><span class="file">5-2</span><span class="file">5-3</span><span class="file">5-4</span></div></div>
+      </article>
+
+      <article class="card">
+        <div class="visual four-up">
+          <div class="hero-tile"><img src="images/6-2.png" alt="Direction 6 main logo"></div>
+          <div class="mini-tile"><img src="images/6-1.png" alt=""></div>
+          <div class="mini-tile"><img src="images/6-3.png" alt=""></div>
+          <div class="mini-tile"><img src="images/6-4.png" alt=""></div>
+        </div>
+        <div class="body"><div class="topline"><h2>06. Editorial QV</h2><span class="badge">premium</span></div><p>更像高端机构、研究品牌或金融科技，适合高级、克制、可信的定位。</p><div class="files"><span class="file">6-1</span><span class="file">6-2</span><span class="file">6-3</span><span class="file">6-4</span></div></div>
+      </article>
+
+      <article class="card">
+        <div class="visual four-up">
+          <div class="hero-tile"><img src="images/7-1.png" alt="Direction 7 main logo"></div>
+          <div class="mini-tile"><img src="images/7-2.png" alt=""></div>
+          <div class="mini-tile"><img src="images/7-3.png" alt=""></div>
+          <div class="mini-tile"><img src="images/7-4.png" alt=""></div>
+        </div>
+        <div class="body"><div class="topline"><h2>07. Cube Gateway</h2><span class="badge">platform</span></div><p>立方体/网关感更强，适合表达 capability registry、API 平台和基础设施入口。</p><div class="files"><span class="file">7-1</span><span class="file">7-2</span><span class="file">7-3</span><span class="file">7-4</span></div></div>
+      </article>
+
+      <article class="card">
+        <div class="visual four-up">
+          <div class="hero-tile"><img src="images/8-1.png" alt="Direction 8 main logo"></div>
+          <div class="mini-tile"><img src="images/8-2.png" alt=""></div>
+          <div class="mini-tile"><img src="images/8-3.png" alt=""></div>
+          <div class="mini-tile"><img src="images/8-4.png" alt=""></div>
+        </div>
+        <div class="body"><div class="topline"><h2>08. Abstract Signal</h2><span class="badge">distinctive</span></div><p>更抽象、几何化，少一点字母感，多一点现代品牌符号感。</p><div class="files"><span class="file">8-1</span><span class="file">8-2</span><span class="file">8-3</span><span class="file">8-4</span></div></div>
+      </article>
+
+      <article class="card">
+        <div class="visual four-up">
+          <div class="hero-tile"><img src="images/9-2.png" alt="Direction 9 main logo"></div>
+          <div class="mini-tile"><img src="images/9-1.png" alt=""></div>
+          <div class="mini-tile"><img src="images/9-3.png" alt=""></div>
+          <div class="mini-tile"><img src="images/9-4.png" alt=""></div>
+        </div>
+        <div class="body"><div class="topline"><h2>09. Ribbon Lens</h2><span class="badge">official</span></div><p>最接近官网原 logo 的丝带/发现镜头方向，适合继续精修为主品牌。</p><div class="files"><span class="file">9-1</span><span class="file">9-2</span><span class="file">9-3</span><span class="file">9-4</span></div></div>
+      </article>
+
+      <article class="card">
+        <div class="visual four-up">
+          <div class="hero-tile"><img src="images/10-1.png" alt="Direction 10 main logo"></div>
+          <div class="mini-tile"><img src="images/10-2.png" alt=""></div>
+          <div class="mini-tile"><img src="images/10-3.png" alt=""></div>
+          <div class="mini-tile"><img src="images/10-4.png" alt=""></div>
+        </div>
+        <div class="body"><div class="topline"><h2>10. Radial Aperture</h2><span class="badge">tech</span></div><p>径向扇叶形成 Q，像光圈、检索、扫描。科技感强，但需要控制复杂度。</p><div class="files"><span class="file">10-1</span><span class="file">10-2</span><span class="file">10-3</span><span class="file">10-4</span></div></div>
+      </article>
+
+      <article class="card">
+        <div class="visual four-up">
+          <div class="hero-tile"><img src="images/11.png" alt="Direction 11 main logo"></div>
+          <div class="mini-tile"><img src="images/11-2.png" alt=""></div>
+          <div class="mini-tile"><img src="images/11-3.png" alt=""></div>
+          <div class="mini-tile"><img src="images/11-4.png" alt=""></div>
+        </div>
+        <div class="body"><div class="topline"><h2>11. Network Mesh Q</h2><span class="badge">network</span></div><p>节点和连线构成 Q，更直观表达 network、capability graph、provider mesh。</p><div class="files"><span class="file">11</span><span class="file">11-2</span><span class="file">11-3</span><span class="file">11-4</span></div></div>
+      </article>
+
+      <article class="card">
+        <div class="visual four-up">
+          <div class="hero-tile"><img src="images/12-2.png" alt="Direction 12 main logo"></div>
+          <div class="mini-tile"><img src="images/12.png" alt=""></div>
+          <div class="mini-tile"><img src="images/12-3.png" alt=""></div>
+          <div class="mini-tile"><img src="images/12-4.png" alt=""></div>
+        </div>
+        <div class="body"><div class="topline"><h2>12. Luxury QV</h2><span class="badge">high-end</span></div><p>高端、优雅、偏金融/研究机构。品牌感强，但 AI agent 工具语义较弱。</p><div class="files"><span class="file">12</span><span class="file">12-2</span><span class="file">12-3</span><span class="file">12-4</span></div></div>
+      </article>
+
+      <article class="card">
+        <div class="visual four-up">
+          <div class="hero-tile"><img src="images/13-1.png" alt="Direction 13 main logo"></div>
+          <div class="mini-tile"><img src="images/13-2.png" alt=""></div>
+          <div class="mini-tile"><img src="images/13-3.png" alt=""></div>
+          <div class="mini-tile"><img src="images/13-4.png" alt=""></div>
+        </div>
+        <div class="body"><div class="topline"><h2>13. QK Monogram</h2><span class="badge">bold</span></div><p>更像字母组合标，结构强、冲击力强。适合想要独立字母符号的方向。</p><div class="files"><span class="file">13-1</span><span class="file">13-2</span><span class="file">13-3</span><span class="file">13-4</span></div></div>
+      </article>
+    </section>
+
+    <footer>建议客户评审方式：第一轮只选 2-3 个方向，不讨论颜色细节；第二轮再对选中的方向做比例、线宽、颜色和官网应用场景精修。</footer>
+  </main>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="Logo preview">
+    <div class="lightbox-panel">
+      <div class="lightbox-stage"><img id="lightboxImage" src="" alt=""></div>
+      <div class="lightbox-bar">
+        <span class="lightbox-name" id="lightboxName"></span>
+        <div class="lightbox-actions">
+          <a id="lightboxDownload" href="#" download>下载 PNG</a>
+          <button type="button" id="lightboxClose">关闭</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const lightboxName = document.getElementById('lightboxName');
+    const lightboxDownload = document.getElementById('lightboxDownload');
+    const lightboxClose = document.getElementById('lightboxClose');
+
+    function fileNameFromSrc(src) {
+      return decodeURIComponent(src.split('/').pop().split('?')[0]);
+    }
+
+    function openLightbox(src) {
+      const name = fileNameFromSrc(src);
+      lightboxImage.src = src;
+      lightboxImage.alt = name;
+      lightboxName.textContent = name;
+      lightboxDownload.href = src;
+      lightboxDownload.download = name;
+      lightbox.classList.add('is-open');
+      lightbox.setAttribute('aria-hidden', 'false');
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('is-open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      lightboxImage.src = '';
+    }
+
+    document.querySelectorAll('.hero-tile img, .mini-tile img').forEach((img) => {
+      const tile = img.closest('.hero-tile, .mini-tile');
+      const src = img.getAttribute('src');
+      const download = document.createElement('a');
+      download.className = 'download-link';
+      download.href = src;
+      download.download = fileNameFromSrc(src);
+      download.textContent = '下载';
+      download.addEventListener('click', (event) => event.stopPropagation());
+      tile.appendChild(download);
+      img.addEventListener('click', () => openLightbox(src));
+      tile.addEventListener('click', (event) => {
+        if (event.target === download) return;
+        openLightbox(src);
+      });
+    });
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (event) => {
+      if (event.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') closeLightbox();
+    });
+  </script>
+</body>
+</html>
